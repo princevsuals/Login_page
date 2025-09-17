@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vsual Studios</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="head">Welcome to Vsual Studios!!</h1>
+
+        <span class="span"><span class="login" onclick="login()">Login</span> <span class="signup"
+                onclick="signUp()">Signup</span></span>
+        <div class="underline"></div>
+        <div class="loginSetup">
+            <form action="https://vsualstudio.com">
+                <input id="name" type="text" placeholder="Enter Username" class="input" required>
+                <br><br>
+                <input id="password" type="password" placeholder="Enter Password" class="input" required minlength="8"
+                    maxlength="16"><br>
+                <br>
+
+                <button class="button" onclick="regex()">Login</button>
+            </form>
+        </div>
+
+        <div class="signupSetup">
+            <form action="https://vsualstudio.com">
+                <input type="text" class="inpt" placeholder="First Name"><br><br>
+                <input type="text" class="inpt" placeholder="Last Name"><br><br>
+                <input type="text" class="inpt" placeholder="Username"><br><br>
+                <input type="password" class="inpt" placeholder="Password"><br><br>
+                <input type="password" class="inpt" placeholder="Confirm Password"><br><br>
+                <button class="button2">Sign Up</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script>
+        let body = document.querySelector("body")
+        let container = document.querySelector(".container")
+        const regex1 = document.querySelector("#name")
+        const pass1 = document.querySelector("#password")
+        let span = document.querySelector(".span")
+        let lgin = document.querySelector(".login")
+        let signup = document.querySelector(".signup")
+        let underline = document.querySelector(".underline")
+        let Login = document.querySelector(".loginSetup")
+        let Signup = document.querySelector(".signupSetup")
+        let button2 = document.querySelector(".button2")
+        const sgnupBtn = document.querySelectorAll(".inpt")
+        let him = 0
+
+        function signUp() {
+            if (him === 0) {
+                underline.classList.remove("translateBack")
+                underline.classList.add("translate")
+                container.classList.add("size")
+                container.classList.remove("unsize")
+                Login.classList.add("transform")
+                Login.classList.remove("transformBack")
+                Signup.classList.add("switch")
+                Signup.classList.remove("unswitch")
+                container.classList.add("bodyR")
+                container.classList.remove("body")
+
+                him = 1
+            }
+        }
+        function login() {
+            if (him === 1) {
+                underline.classList.remove("translate")
+                underline.classList.add("translateBack")
+                container.classList.remove("size")
+                container.classList.add("unsize")
+                Login.classList.remove("transform")
+                Login.classList.add("transformBack")
+                Signup.classList.remove("switch")
+                Signup.classList.add("unswitch")
+                container.classList.add("body")
+                container.classList.remove("bodyR")
+                him = 0
+            }
+        }
+
+        function regex() {
+            if (/^(?=.*\w)(?=.*\W)(?=.*\d).+$/.test(regex1.value)) {
+                return regex1.value
+
+            } else {
+                alert(`Username should contain atleast one character, words and digits`)
+                regex1.value = ""
+                pass1.value = ""
+            }
+        }
+    </script>
+</body>
+
+</html>
