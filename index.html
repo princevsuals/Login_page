@@ -23,18 +23,18 @@
                     maxlength="16"><br>
                 <br>
 
-                <button class="button" onclick="regex()">Login</button>
+                <button class="button" onclick="combination()">Login</button>
             </form>
         </div>
 
         <div class="signupSetup">
             <form action="https://vsualstudio.com">
-                <input type="text" class="inpt" placeholder="First Name"><br><br>
-                <input type="text" class="inpt" placeholder="Last Name"><br><br>
-                <input type="text" class="inpt" placeholder="Username"><br><br>
-                <input type="password" class="inpt" placeholder="Password"><br><br>
-                <input type="password" class="inpt" placeholder="Confirm Password"><br><br>
-                <button class="button2">Sign Up</button>
+                <input id="frstname" type="text" class="inpt" placeholder="First Name"><br><br>
+                <input id="lstname" type="text" class="inpt" placeholder="Last Name"><br><br>
+                <input id="usrname" type="text" class="inpt" placeholder="Username"><br><br>
+                <input id="psswrd" type="password" class="inpt" placeholder="Password"><br><br>
+                <input id="cfrmpsswrd" type="password" class="inpt" placeholder="Confirm Password"><br><br>
+                <button class="button2" onclick="signupCombo()">Sign Up</button>
             </form>
         </div>
 
@@ -53,7 +53,12 @@
         let Login = document.querySelector(".loginSetup")
         let Signup = document.querySelector(".signupSetup")
         let button2 = document.querySelector(".button2")
-        const sgnupBtn = document.querySelectorAll(".inpt")
+        let frstname = document.getElementById("frstname")
+        let lstname = document.getElementById("lstname")
+        let usrname = document.getElementById("usrname")
+        let psswrd = document.getElementById("psswrd")
+        let cfrmpsswrd = document.getElementById("cfrmpsswrd")
+        console.log(psswrd)
         let him = 0
 
         function signUp() {
@@ -89,13 +94,89 @@
         }
 
         function regex() {
-            if (/^(?=.*\w)(?=.*\W)(?=.*\d).+$/.test(regex1.value)) {
+            if (/^[A-Z][a-zA-Z0-9]+@[a-z]+\.[a-z]{3,}$/.test(regex1.value)) {
                 return regex1.value
 
             } else {
-                alert(`Username should contain atleast one character, words and digits`)
+                alert(`Username should contain an "@" one character[.], words and digits
+                and exactly 3 word at the end eg. .com, .org, .net`)
                 regex1.value = ""
+            }
+        }
+        function password() {
+            if (/^[0-9a-zA-Z]{6,}\W$/.test(pass1.value)) {
+                return pass1.value
+            } else {
+                alert(`Passwords should contain a minimum of 6 characters with letters numbers and special characters inclusive`)
                 pass1.value = ""
+            }
+        }
+        function combination() {
+            if (regex() && password()) {
+                regex();
+                password()
+                alert(`Login Successful`)
+            } else {
+                event.preventDefault()
+            }
+        }
+
+        function checkfName() {
+            if (/^[A-Za-z]{1,}$/.test(frstname.value)) {
+                return frstname.value
+            } else {
+                alert(`Firstname should be only letters more than one`)
+                frstname.value = ""
+            }
+        }
+        function checklName() {
+            if (/^[A-Za-z]{1,}$/.test(lstname.value)) {
+                return lstname.value
+            } else {
+                alert(`Lastname should be only letters more than one`)
+                lstname.value = ""
+            }
+        }
+        function checkuName() {
+            if (/^[A-Z][a-zA-Z0-9]+@[a-z]+\.[a-z]{3,}$/.test(usrname.value)) {
+                return usrname.value
+
+            } else {
+                alert(`Username should contain an "@" one character[.], words and digits
+                and exactly 3 word at the end eg. .com, .org, .net`)
+                usrname.value = ""
+            }
+        }
+        function checkpWord() {
+            if (/^[0-9a-zA-Z]{6,}\W$/.test(psswrd.value)) {
+                return psswrd.value
+            } else {
+                alert(`Passwords should contain a minimum of 6 characters with letters numbers and special characters inclusive`)
+                psswrd.value = ""
+            }
+        }
+        function checkcpWord() {
+            if (/^[0-9a-zA-Z]{6,}\W$/.test(cfrmpsswrd.value)) {
+                return cfrmpsswrd.value
+            } else {
+                alert(`Passwords should contain a minimum of 6 characters with letters numbers and special characters inclusive`)
+                cfrmpsswrd.value = ""
+            }
+        }
+
+        function signupCombo() {
+            if (checkfName() && checklName() && checkpWord() && checkuName() && checkcpWord()) {
+                checkfName()
+                checklName()
+                checkuName()
+                checkpWord()
+                checkcpWord()
+                alert(`Thank you
+                You have successfully signed up`)
+            } else {
+                event.preventDefault()
+                alert(`Sign up Failed
+                Fill in the required spaces`)
             }
         }
     </script>
