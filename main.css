@@ -154,6 +154,21 @@
          transition: transform 0.4s;
      }
  }
+@media (min-width: 0px) and (max-width: 450px) {
+     .translate {
+         transform: translateX(325%);
+         transition: transform 0.4s;
+     }
+
+     .translateBack {
+         transform: translateX(-0.01rem);
+         transition: transform 0.4s;
+     }
+
+     .container {
+         width: 70%;
+     }
+ }
 
  .transform {
      transform: translateX(-400px);
@@ -199,4 +214,5 @@
      transition: margin-top 0.3s ease-in;*/
  }
  
+
 
