@@ -119,8 +119,7 @@
      transition: transform 0.4s;
  }
 
-
- @media(max-width: 472px) {
+ @media (min-width: 1025px) {
      .translate {
          transform: translateX(410%);
          transition: transform 0.4s;
@@ -132,9 +131,9 @@
      }
  }
 
- @media(max-width: 321px) {
+ @media (min-width: 601px) and (max-width: 1024px) {
      .translate {
-         transform: translateX(310%);
+         transform: translateX(410%);
          transition: transform 0.4s;
      }
 
@@ -144,6 +143,17 @@
      }
  }
 
+ @media (min-width: 321px) and (max-width: 600px) {
+     .translate {
+         transform: translateX(410%);
+         transition: transform 0.4s;
+     }
+
+     .translateBack {
+         transform: translateX(-0.01rem);
+         transition: transform 0.4s;
+     }
+ }
 
  .transform {
      transform: translateX(-400px);
@@ -189,3 +199,4 @@
      transition: margin-top 0.3s ease-in;*/
  }
  
+
